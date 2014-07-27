@@ -1,0 +1,56 @@
+<!-- SIDEBAR -->
+<!-- START statistics -->
+<div class="forum-statistics">
+  <div class="list-group">
+    <li class="list-group-item list-group-item-success">
+      <b>Forum statistics</b>
+    </li>
+    <a href="#" class="list-group-item">Users <span class="badge">14</span></a>
+    <a href="#" class="list-group-item">Threads<span class="badge">25</span></a>
+    <a href="#" class="list-group-item">Total posts <span class="badge">140</span></a>
+  </div>
+  <br>
+</div>
+<!-- END statistics -->
+
+<!-- CATEGORIES -->
+<div class="topic-categories">
+  <h3>
+    <span class="label label-primary">CATEGORIES</span>
+  </h3>
+  <hr>
+  <ul class="list-unstyled">
+    <% 6.times do %>
+      <li>
+        <a href="#"><b>Ruby on Rails</b></a>
+        <span class="pull-right"><span class="glyphicon glyphicon-star"></span></span>
+      </li>
+    <% end %>
+  </ul>
+  <br>
+</div>
+<!-- END CATEGORIES!-->
+
+<!-- START top users -->
+<div class="top-users">
+  <h3><span class="label label-danger">TOP 10 Users</span></h3>
+  <hr>
+
+  <ul class="media-list">
+    <% 10.times do %>
+      <li class="media">
+        <a class="pull-left" href="#">
+          <img class="media-object" src="http://lorempixel.com/output/cats-q-c-40-40-4.jpg" alt="cat">
+        </a>
+        <div class="media-body">
+          <a href="#"><h4 class="media-heading">xxxDarkKnightxxx</h4></a>
+          <small>1337 posts</small>
+        </div>
+      </li>
+    <% end %>
+
+  </ul>
+</div>
+<!-- END top users -->
+
+<!-- END SIDEBAR! -->
