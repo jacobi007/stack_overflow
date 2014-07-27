@@ -10,13 +10,16 @@
 
   <%= render 'layouts/navbar' %>
 
-  <%= render 'layouts/navigation' %>
+  <%= render 'layouts/navigation' if params[:controller] == 'questions'%>
 
   <!-- YIELD -->
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
         <div class="col-md-9">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+
           <%= render 'layouts/intro_header' if params[:controller] == 'questions' %>
 
           <%= yield %>
@@ -29,6 +32,6 @@
     </div>
   </div>
 </div>
-<%= render 'layouts/footer' %>
+  <%= render 'layouts/footer' %>
 </body>
 </html>

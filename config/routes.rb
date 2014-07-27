@@ -1,4 +1,5 @@
 Project::Application.routes.draw do
+  devise_for :users
   resources :answers
   root 'questions#index'
   resources :questions
