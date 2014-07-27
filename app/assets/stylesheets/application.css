@@ -13,3 +13,8 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+.checkbox_simple_form {
+  position: relative;
+  left: 20px;  
+ }

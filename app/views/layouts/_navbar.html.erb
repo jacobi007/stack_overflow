@@ -25,14 +25,24 @@
               <span class="glyphicon glyphicon-search"></span>
             </button>
           </form>
+          <% unless user_signed_in? %>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <%= link_to "Sign in", new_user_session_path %>
+              </li>
+              <li>
+                <%= link_to "Sign up", new_user_registration_path %>
+              </li>
+            </ul>
+          <% else %>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#">signed as <%= current_user.email %></a></li>
+              <li>
+                <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+              </li>
+            </ul>
+          <% end %>
 
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <%= button_to new_user_registration_path, class: "btn btn-default navbar-btn", method: :get do %>
-                <span class="glyphicon glyphicon-user"> Login/SignUp</span>
-              <% end %>
-            </li>
-          </ul>
         </div><!-- /.navbar-collapse -->
       </div>
     </div>

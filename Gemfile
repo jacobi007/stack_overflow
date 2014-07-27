@@ -23,3 +23,4 @@ group :doc do
 end
 
 gem 'devise'
+gem 'simple_form'
