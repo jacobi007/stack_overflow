@@ -28,10 +28,9 @@
 
           <ul class="nav navbar-nav navbar-right">
             <li>
-              <button type="button" class="btn btn-default navbar-btn">
-                <span class="glyphicon glyphicon-user"></span>
-                Login or join
-              </button>
+              <%= button_to new_user_registration_path, class: "btn btn-default navbar-btn", method: :get do %>
+                <span class="glyphicon glyphicon-user"> Login/SignUp</span>
+              <% end %>
             </li>
           </ul>
         </div><!-- /.navbar-collapse -->
