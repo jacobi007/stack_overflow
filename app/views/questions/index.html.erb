@@ -6,7 +6,7 @@
           <img class="media-object" src="http://lorempixel.com/output/nature-q-c-70-70-1.jpg" alt="#">
         </a>
         <div class="media-body">
-          <h3 class="media-heading"><%= question.title %></h3>
+          <h3 class="media-heading"><%= link_to question.title, question %></h3>
           <small>
               Updated on <%= question.updated_at %> in <b><%= question.category %></b><a href="#"> Last reply</a> by
               <a href="#"><%= question.user.username %></a>
@@ -16,5 +16,7 @@
     </div>
   <% end %>
 
-  <%= will_paginate @questions, renderer: BootstrapPagination::Rails %>
+  <div class="text-center">
+    <%= will_paginate @questions, renderer: BootstrapPagination::Rails %>
+  </div>
 </div>
