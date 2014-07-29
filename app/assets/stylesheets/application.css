@@ -16,5 +16,13 @@
 
 .checkbox_simple_form {
   position: relative;
-  left: 20px;  
+  left: 20px;
  }
+
+#paperclip_upload {
+  position: relative;
+  left: -10px;
+  margin-bottom: 5px;
+  margin-top: -5px;
+
+}

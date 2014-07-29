@@ -4,7 +4,10 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :answers, through: :questions
 
-  accepts_nested_attributes_for :answers
+  has_attached_file :avatar, :styles => { :medium => "300x300>",:topka => "40x40>", :thumb => "80x80" },
+   :default_url => "http://lorempixel.com/120/80/abstract/"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

@@ -26,3 +26,4 @@ gem 'devise'
 gem 'simple_form'
 gem 'faker'
 gem 'will_paginate-bootstrap'
+gem "paperclip", "~> 4.1"
