@@ -10,15 +10,24 @@
 
   <%= render 'layouts/navbar' %>
 
-  <%= render 'layouts/navigation' if params[:controller] == 'questions'%>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+
+        <%= render 'layouts/alert_or_notice' %>
+
+        <%= render 'layouts/navigation' if params[:controller] == 'questions'%>
+      </div>
+    </div>
+  </div>
 
   <!-- YIELD -->
   <div class="container">
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
         <div class="col-md-9">
-          <p class="notice"><%= notice %></p>
-          <p class="alert"><%= alert %></p>
+
 
           <%= render 'layouts/intro_header' if params[:controller] == 'questions' %>
 
