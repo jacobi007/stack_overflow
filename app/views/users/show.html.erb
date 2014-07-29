@@ -1,0 +1,20 @@
+<div class="jumbotron">
+  <div class="media">
+    <span class="pull-left">
+      <%= image_tag @user.avatar.url(:profile) %>
+      <!-- <img class="media-object img-thumbnail" src="http://placehold.it/170x170" alt="..."> -->
+    </span>
+    <div class="media-body">
+      <h2 class="text-center media-heading">
+        <i><%= @user.username %> </i><span class="label label-warning">25 points</span>
+      </h2>
+      <small><%= @user.email %> joined <%= @user.created_at %></small>
+      <hr>
+      <ul class="list-unstyled">
+        <li><h4>Posts <span class="badge"><%= @user.questions.count + @user.answers.count %></span></h4></li>
+        <li><h4>Accepted answers <span class="badge">2</span></h4></li>
+        <li><h4>Ranked <span class="badge">288</span></h4></li>
+      </ul>
+    </div>
+  </div>
+</div>
