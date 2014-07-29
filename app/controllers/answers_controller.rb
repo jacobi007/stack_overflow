@@ -7,33 +7,26 @@ class AnswersController < ApplicationController
     @answers = Answer.all
   end
 
-  # GET /answers/1
-  # GET /answers/1.json
   def show
   end
 
-  # GET /answers/new
   def new
     @answer = Answer.new
   end
 
-  # GET /answers/1/edit
+
   def edit
   end
 
-  # POST /answers
-  # POST /answers.json
+
   def create
     @answer = Answer.new(answer_params)
+    @answer.update_attributes(user_id: current_user.id)
 
-    respond_to do |format|
-      if @answer.save
-        format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @answer }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
-      end
+    if @answer.save
+      redirect_to @answer.question, notice: 'Answer was successfully created.'
+    else
+      redirect_to @answer.question, alert: 'Looks like you didnt succeed'
     end
   end
 
@@ -69,6 +62,6 @@ class AnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:body, :references)
+      params.require(:answer).permit(:body, :question_id, :user_id)
     end
 end

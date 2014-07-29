@@ -5,24 +5,23 @@ class QuestionsController < ApplicationController
     @questions = Question.paginate(page: params[:page], per_page: 10)
   end
 
-  # GET /questions/1
-  # GET /questions/1.json
   def show
     @question = Question.find(params[:id])
-    # @answers = Answer.find_by(question_id: params[:id])
+    @answer = Question.find(params[:id]).answers.build
   end
 
-  # GET /questions/new
-  def new
-    @question = Question.new
-  end
+  # # GET /questions/new
+  # def new
+  #   @question = Question.new
+  # end
 
-  # GET /questions/1/edit
-  def edit
-  end
+  # # GET /questions/1/edit
+  # def edit
+  # end
 
   # POST /questions
   # POST /questions.json
+
   def create
     @question = Question.new(question_params)
 

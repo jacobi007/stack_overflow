@@ -2,7 +2,7 @@
 
 <div>
   <h3><%= @question.title %></h3>
-  <p><small>Updated at <%= @question.updated_at %> in <b><%= @question.category %></b></small></p>
+  <p><small>Created on <%= @question.created_at %> in <b><%= @question.category %></b></small></p>
   <hr>
 </div>
 
@@ -40,23 +40,18 @@
         </div>
       <% end %>
 
-      <!-- <div class="media">
-        <a class="pull-left" href="#">
-          <img class="media-object" src="http://placehold.it/80x80" alt="...">
-        </a>
-        <div class="media-body">
-          <h4 class="media-heading"><b>IAmOziris </b><small>on Sep 16,2014</small></h4>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab voluptatem consequatur
-            libero ad ipsa veniam omnis.
-          </p>
-          <p>
-            aspernatur a illum unde numquam minima consequuntur. Corporis
-            blanditiis dignissimos soluta ad, ab facilis!
-          </p>
-        </div>
-        <hr>
-      </div> -->
+      <% if user_signed_in? %>
+      <h3>Add comment!</h3>
+      <%= simple_form_for @answer do |f| %>
+        <%= f.input :body, label: false, input_html: { rows: 8 } %>
+        <%= f.input :question_id, as: :hidden, input_html: { question_id: @question.id }  %>
+        <%= f.button :submit, class: 'btn btn-primary' %>
+
+        <% end %>
+      <% end %>
+
+
+      <%#= link_to "Back", questions_path, class: "btn btn-default" %>
     </div>
   </div>
 
