@@ -25,3 +25,4 @@ end
 gem 'devise'
 gem 'simple_form'
 gem 'faker'
+gem 'will_paginate-bootstrap'
