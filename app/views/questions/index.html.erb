@@ -8,9 +8,10 @@
         <div class="media-body">
           <h3 class="media-heading"><%= link_to question.title, question %></h3>
           <small>
-              Updated on <%= question.updated_at %> in <b><%= question.category %></b><a href="#"> Last reply</a> by
-              <a href="#"><%= question.user.username %></a>
-            </small>
+            <%= question.created_at.strftime("Created at %H:%M %d/%m/%Y") %>
+            in <b><%= question.category %></b>
+            Last reply by <%= link_to question.user.username, question.user %>
+          </small>
         </div>
       </div>
     </div>

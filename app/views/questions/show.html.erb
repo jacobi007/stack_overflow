@@ -2,18 +2,21 @@
 
 <div>
   <h3><%= @question.title %></h3>
-  <p><small>Created on <%= @question.created_at %> in <b><%= @question.category %></b></small></p>
+  <p><small><%= @question.created_at.strftime("Created at %H:%M %d/%m/%Y") %> in <b><%= @question.category %></b></small></p>
   <hr>
 </div>
 
 <!-- QUESTION -->
 <div class="question">
   <div class="media">
-    <a class="pull-left" href="#">
-      <img class="media-object" src="http://placehold.it/80x80" alt="...">
-    </a>
+    <div class="pull-left">
+      <%= image_tag @question.user.avatar.url(:thumb) %>
+    </div>
     <div class="media-body">
-      <h4 class="media-heading"><b><%= @question.user.username %> </b><small>on <%= @question.updated_at %></small></h4>
+      <h4 class="media-heading">
+        <b><%= link_to @question.user.username, @question.user %></b>
+        <small><%= time_ago_in_words(@question.updated_at) %> ago</small>
+      </h4>
       <p><%= @question.body %></p>
     </div>
     <hr>
@@ -27,11 +30,14 @@
 
       <% @question.answers.each do |answer| %>
         <div class="media">
-          <a class="pull-left" href="#">
-            <img class="media-object" src="http://placehold.it/80x80" alt="...">
-          </a>
+          <div class="pull-left">
+            <%= image_tag answer.user.avatar.url(:thumb) %>
+          </div>
           <div class="media-body">
-            <h4 class="media-heading"><b><%= answer.user.username %> </b><small>on <%= answer.updated_at %></small></h4>
+            <h4 class="media-heading">
+              <b><%= link_to answer.user.username, answer.user %></b>
+              <small><%= time_ago_in_words(answer.updated_at) %> ago</small>
+            </h4>
             <p>
               <%= answer.body %>
             </p>

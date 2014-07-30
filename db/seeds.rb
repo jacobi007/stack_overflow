@@ -13,6 +13,7 @@ Answer.delete_all
 100.times do |n|
   User.create(username: Faker::Internet.user_name,
               email: "jacobi#{n+1}@example.com",
+              avatar: "http://www.lorempixel.com/80/80/abstract/#{n%10}",
               password: "jacobi",
               password: "jacobi")
 end
