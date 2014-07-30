@@ -13,6 +13,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = current_user.questions.build
+    @categories = Category.all.map { |u| [u.name, u.id] }
   end
 
   # # GET /questions/1/edit
@@ -63,6 +64,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:title, :body, :category)
+      params.require(:question).permit(:title, :body, :category_id)
     end
 end

@@ -2,7 +2,10 @@
 
 <div>
   <h3><%= @question.title %></h3>
-  <p><small><%= @question.created_at.strftime("Created at %H:%M %d/%m/%Y") %> in <b><%= @question.category %></b></small></p>
+  <p>
+    <small><%= @question.created_at.strftime("Created at %H:%M %d/%m/%Y") %> in
+    <b><%= @question.category.name %></b></small>
+  </p>
   <hr>
 </div>
 
