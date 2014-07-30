@@ -1,5 +1,29 @@
-<h1>New question</h1>
+<%= simple_form_for(@question) do |f| %>
+  <!-- <% if @question.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', questions_path %>
+      <ul>
+      <% @question.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %> -->
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">What troubles you?</h3>
+    </div>
+    <div class="panel-body">
+      <div class="form-inputs">
+        <%= f.input :title, label: 'Question title' %>
+        <%= f.input :category %>
+        <%= f.input :body, input_html: { rows: 8 }, label: false %>
+        <%#= f.input :user_id, as: :hidden, input_html: { user_id: current_user.id } %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, "Ask Question!", class: 'btn btn-primary' %>
+      </div>
+    </div>
+  </div>
+<% end %>

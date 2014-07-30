@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new]
 
   def index
     @questions = Question.paginate(page: params[:page], per_page: 10)
@@ -10,10 +11,9 @@ class QuestionsController < ApplicationController
     @answer = Question.find(params[:id]).answers.build
   end
 
-  # # GET /questions/new
-  # def new
-  #   @question = Question.new
-  # end
+  def new
+    @question = current_user.questions.build
+  end
 
   # # GET /questions/1/edit
   # def edit
@@ -23,16 +23,11 @@ class QuestionsController < ApplicationController
   # POST /questions.json
 
   def create
-    @question = Question.new(question_params)
-
-    respond_to do |format|
-      if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @question }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
-      end
+    @question = current_user.questions.build(question_params)
+    if @question.save
+       redirect_to @question, notice: 'Question was successfully created.'
+    else
+       render action: 'new', alert: 'Few errors prohibited the form from being submitted'
     end
   end
 
@@ -68,6 +63,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:title, :body)
+      params.require(:question).permit(:title, :body, :category)
     end
 end

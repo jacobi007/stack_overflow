@@ -9,6 +9,12 @@
 User.delete_all
 Question.delete_all
 Answer.delete_all
+Category.delete_all
+
+categories = %w{ Ruby Ruby\ on\ Rails Javascript Java Android C++ Obj-C
+                 C# Python Django Javascript\ Frameworks Scala CoffeeScript
+                 HTML\ &\ CSS Web\ Design UX\ Design None\ of\ above
+               }
 
 100.times do |n|
   User.create(username: Faker::Internet.user_name,
@@ -18,10 +24,15 @@ Answer.delete_all
               password: "jacobi")
 end
 
+categories.each do |category|
+  Category.create(name: category)
+end
+
 User.first(20).each do |user|
+  offset = rand(Category.count)
   user.questions.create(title: Faker::Lorem.sentence,
                         body: Faker::Lorem.paragraph(rand(20)+5),
-                        category: Faker::Lorem.word)
+                        category: Category.first(offset: offset))
 end
 
 Question.all.each do |question|

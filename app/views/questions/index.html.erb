@@ -2,15 +2,15 @@
   <% @questions.each do |question|  %>
     <div class="list-group-item">
       <div class="media">
-        <div href="#" class="pull-left">
+        <div class="pull-left">
           <%= image_tag question.user.avatar.url(:thumb) %>
         </div>
         <div class="media-body">
           <h3 class="media-heading"><%= link_to question.title, question %></h3>
           <small>
             <%= question.created_at.strftime("Created at %H:%M %d/%m/%Y") %>
-            in <b><%= question.category %></b>
-            Last reply by <%= link_to question.user.username, question.user %>
+            in <b><%= question.category.name %></b>
+            Last reply by <b><%= link_to question.user.username, question.user %></b>
           </small>
         </div>
       </div>
