@@ -5,9 +5,11 @@
     <li class="list-group-item list-group-item-success">
       <b>Forum statistics</b>
     </li>
-    <a href="#" class="list-group-item">Users <span class="badge">14</span></a>
-    <a href="#" class="list-group-item">Threads<span class="badge">25</span></a>
-    <a href="#" class="list-group-item">Total posts <span class="badge">140</span></a>
+
+    <%= link_to(raw("Users <span class='badge'>#{@users}</span>"), root_url , :class => 'list-group-item' ) %>
+    <%= link_to(raw("Threads opened <span class='badge'>#{@threads}</span>"), root_url , :class => 'list-group-item' ) %>
+    <%= link_to(raw("Total posts <span class='badge'>#{@posts}</span>"), root_url , :class => 'list-group-item' ) %>
+
   </div>
   <br>
 </div>
@@ -16,13 +18,13 @@
 <!-- CATEGORIES -->
 <div class="topic-categories">
   <h3>
-    <span class="label label-primary">CATEGORIES</span>
+    <span class="label label-primary">TOP 5 CATEGORIES</span>
   </h3>
   <hr>
   <ul class="list-unstyled">
-    <% 6.times do %>
+    <% @top_categories.each do |cat| %>
       <li>
-        <a href="#"><b>Ruby on Rails</b></a>
+        <b><%= link_to cat.name, root_url %></b>
         <span class="pull-right"><span class="glyphicon glyphicon-star"></span></span>
       </li>
     <% end %>
@@ -33,7 +35,7 @@
 
 <!-- START top users -->
 <div class="top-users">
-  <h3><span class="label label-danger">TOP 10 Users</span></h3>
+  <h3><span class="label label-danger">TOP 10 USERS</span></h3>
   <hr>
 
   <ul class="media-list">
