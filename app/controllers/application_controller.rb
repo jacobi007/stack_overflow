@@ -20,6 +20,7 @@ protected
   end
 
   def load_top_users
+    @top_users = User.all.order('points desc').first(10)
   end
 
   def load_statistics

@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   has_many :questions
   has_many :answers, through: :questions
 
-  has_attached_file :avatar, :styles => { :topka => "40x40>", :thumb => "80x80>", :profile => "170x170>" },
+  has_attached_file :avatar, :styles => { :top_user => "40x40>", :thumb => "80x80>", :profile => "170x170>" },
    :default_url => "http://lorempixel.com/120/80/abstract/"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 

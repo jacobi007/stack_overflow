@@ -21,7 +21,8 @@ categories = %w{ Ruby Ruby\ on\ Rails Javascript Java Android C++ Obj-C
               email: "jacobi#{n+1}@example.com",
               avatar: "http://www.lorempixel.com/80/80/abstract/#{n%10}",
               password: "jacobi",
-              password: "jacobi")
+              password: "jacobi",
+              points: (rand(1000) + 25))
 end
 
 categories.each do |category|
@@ -40,4 +41,8 @@ Question.all.each do |question|
   question.answers.create(body: Faker::Lorem.paragraph(rand(4)+1),
                           user_id: (rand(100)+1))
   end
+end
+
+Category.all.each do |c|
+  c.update_attribute :questions_count, c.questions.count
 end

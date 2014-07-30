@@ -39,14 +39,15 @@
   <hr>
 
   <ul class="media-list">
-    <% 10.times do %>
+    <% @top_users.each do |user| %>
       <li class="media">
-        <a class="pull-left" href="#">
-          <img class="media-object" src="http://lorempixel.com/output/cats-q-c-40-40-4.jpg" alt="cat">
-        </a>
+        <div class="pull-left">
+          <%= image_tag user.avatar.url(:top_user) %>
+          <!-- <img class="media-object" src="http://lorempixel.com/output/cats-q-c-40-40-4.jpg" alt="cat"> -->
+        </div>
         <div class="media-body">
-          <a href="#"><h4 class="media-heading">xxxDarkKnightxxx</h4></a>
-          <small>1337 posts</small>
+          <%= link_to(raw("<h4 class='media-heading'>#{user.username}</h4>"), user ) %>
+          <small><%= user.points %> points</small>
         </div>
       </li>
     <% end %>
