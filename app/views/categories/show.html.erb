@@ -1,5 +1,13 @@
+<div>
+  <h3>
+    <span class="label label-primary">Questions asked in <%= @category.name %> category</span>
+    <%= link_to(raw("<span>Show all categories</span>"), categories_path , :class => 'label label-info' ) %>
+  </h3>
+  <br>
+</div>
+
 <div class="list-group">
-  <% @questions.each do |question|  %>
+  <% @category_questions.each do |question|  %>
     <div class="list-group-item">
       <div class="media">
         <div class="pull-left">
@@ -9,7 +17,7 @@
           <h3 class="media-heading"><%= link_to question.title, question %></h3>
           <small>
             <%= question.created_at.strftime("Created at %H:%M %d/%m/%Y") %>
-            in <b><%= link_to question.category.name, question.category %></b>
+            in <b><%= question.category.name %></b>
             Last reply by <b><%= link_to question.user.username, question.user %></b>
           </small>
         </div>
@@ -18,6 +26,7 @@
   <% end %>
 
   <div class="text-center">
-    <%= will_paginate @questions, renderer: BootstrapPagination::Rails %>
+    <%= will_paginate @category_questions, renderer: BootstrapPagination::Rails %>
   </div>
+
 </div>

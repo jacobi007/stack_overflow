@@ -17,7 +17,7 @@
 
         <%= render 'layouts/alert_or_notice' %>
 
-        <%= render 'layouts/navigation' if params[:action] == 'index'%>
+        <%= render 'layouts/navigation' if params[:action] == 'index' && params[:controller] == 'questions' %>
       </div>
     </div>
   </div>
@@ -29,7 +29,7 @@
         <div class="col-md-9">
 
 
-          <%= render 'layouts/intro_header' if params[:action] == 'index' %>
+          <%= render 'layouts/intro_header' if params[:action] == 'index' && params[:controller] == 'questions' %>
 
           <%= yield %>
 

@@ -1,9 +1,8 @@
 Project::Application.routes.draw do
   devise_for :users
-  resources :answers
+  resources :answers, :questions, :users
   root 'questions#index'
-  resources :questions
-  resources :users
+  resources :categories, only: [:index,:show]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
