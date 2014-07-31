@@ -3,7 +3,15 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
 
   def index
-    @questions = Question.paginate(page: params[:page], per_page: 12)
+    if params[:navtab] == "unanswered"
+      @questions = Question.all.where("answers_count = 0").paginate(
+                           page: params[:page], per_page: 12)
+    elsif params[:navtab] == "hot"
+      @questions = Question.order(answers_count: :desc).limit(10).paginate(
+                           page: params[:page], per_page: 12)
+    elsif
+      @questions = Question.paginate(page: params[:page], per_page: 12)
+    end
   end
 
   def show

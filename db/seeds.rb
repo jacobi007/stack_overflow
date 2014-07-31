@@ -30,14 +30,16 @@ categories.each do |category|
 end
 
 User.first(20).each do |user|
-  offset = rand(Category.count)
-  user.questions.create(title: Faker::Lorem.sentence,
-                        body: Faker::Lorem.paragraph(rand(20)+5),
-                        category: Category.first(offset: offset))
+  3.times do
+    offset = rand(Category.count)
+    user.questions.create(title: Faker::Lorem.sentence,
+                          body: Faker::Lorem.paragraph(rand(20)+5),
+                          category: Category.first(offset: offset))
+  end
 end
 
 Question.all.each do |question|
-  (rand(5)+1).times do
+  (rand(5)).times do
   question.answers.create(body: Faker::Lorem.paragraph(rand(4)+1),
                           user_id: (rand(100)+1))
   end
@@ -45,4 +47,8 @@ end
 
 Category.all.each do |c|
   c.update_attribute :questions_count, c.questions.count
+end
+
+Question.all.each do |q|
+  q.update_attribute :answers_count, c.answers.count
 end

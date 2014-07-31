@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730172222) do
+ActiveRecord::Schema.define(version: 20140731144425) do
 
   create_table "answers", force: true do |t|
     t.text     "body"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20140730172222) do
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "category_id"
+    t.integer  "answers_count", default: 0, null: false
   end
 
   create_table "users", force: true do |t|
