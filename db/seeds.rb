@@ -21,8 +21,7 @@ categories = %w{ Ruby Ruby\ on\ Rails Javascript Java Android C++ Obj-C
               email: "jacobi#{n+1}@example.com",
               avatar: "http://www.lorempixel.com/170/170/abstract/#{n%10}",
               password: "jacobi",
-              password: "jacobi",
-              points: (rand(1000) + 25))
+              password: "jacobi")
 end
 
 categories.each do |category|

@@ -34,6 +34,8 @@ class QuestionsController < ApplicationController
     @question = current_user.questions.build(question_params)
     if @question.save
        redirect_to @question, notice: 'Question was successfully created.'
+       points = @question.user.points
+       @question.user.update_attribute :points, points-10
     else
        render action: 'new', alert: 'Few errors prohibited the form from being submitted'
     end

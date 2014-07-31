@@ -20,6 +20,7 @@ class AnswersController < ApplicationController
 
     if @answer.save
       redirect_to @answer.question, notice: 'Answer was successfully created.'
+      @answer.user.update_attribute :points, @answer.user.points + 5
     else
       redirect_to @answer.question, alert: 'Looks like you didnt succeed'
     end
@@ -29,6 +30,8 @@ class AnswersController < ApplicationController
   def update
     if @answer.update(answer_params)
       redirect_to @answer.question
+      points = @answer.user.points
+      @answer.user.update_attribute :points, points+25
     end
   end
 

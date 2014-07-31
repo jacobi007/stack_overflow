@@ -1,18 +1,26 @@
-<%= simple_form_for(@question) do |f| %>
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title">Explain your problem here!</h3>
-    </div>
-    <div class="panel-body">
-      <div class="form-inputs">
-        <%= f.input :title, label: 'Question title' %>
-        <%= f.input :category_id, collection: @categories %>
-        <%= f.input :body, input_html: { rows: 8 }, label: false %>
-        <%#= f.input :user_id, as: :hidden, input_html: { user_id: current_user.id } %>
-      </div>
-      <div class="form-actions">
-        <%= f.button :submit, "Ask Question!", class: 'btn btn-primary' %>
-      </div>
-    </div>
+
+<% if current_user.points < 10 %>
+  <div class="alert alert-danger" role="alert">
+    Unfortunately you do not have sufficient amount of points to ask a question
   </div>
+  <%= link_to "Back to mainpage", root_url, class: "btn btn-info" %>
+<% else %>
+  <%= simple_form_for(@question) do |f| %>
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Explain your problem here!</h3>
+      </div>
+      <div class="panel-body">
+        <div class="form-inputs">
+          <%= f.input :title, label: 'Question title' %>
+          <%= f.input :category_id, collection: @categories %>
+          <%= f.input :body, input_html: { rows: 8 }, label: false %>
+          <%#= f.input :user_id, as: :hidden, input_html: { user_id: current_user.id } %>
+        </div>
+        <div class="form-actions">
+          <%= f.button :submit, "Ask Question!", class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
 <% end %>

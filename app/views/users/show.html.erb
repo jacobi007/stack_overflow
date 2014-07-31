@@ -5,7 +5,10 @@
     </span>
     <div class="media-body">
       <h2 class="text-center media-heading">
-        <i><%= @user.username %> </i><span class="label label-warning"><%= @user.points %> points</span>
+        <i><%= @user.username %> </i>
+        <span class="label label-warning">
+          <%= pluralize(@user.points, "point") %>
+        </span>
       </h2>
       <h4 class="text-center"><small><%= @user.email %> joined <%= @user.created_at.strftime("%d-%m-%Y") %></small></h4>
       <ul class="list-unstyled">
