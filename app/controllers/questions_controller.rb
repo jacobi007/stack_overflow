@@ -7,8 +7,7 @@ class QuestionsController < ApplicationController
       @questions = Question.all.where("answers_count = 0").paginate(
                            page: params[:page], per_page: 12)
     elsif params[:navtab] == "hot"
-      @questions = Question.order(answers_count: :desc).limit(10).paginate(
-                           page: params[:page], per_page: 12)
+      @questions = Question.order(answers_count: :desc).first(10)
     elsif
       @questions = Question.paginate(page: params[:page], per_page: 12)
     end

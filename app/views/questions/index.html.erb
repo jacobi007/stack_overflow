@@ -18,6 +18,8 @@
   <% end %>
 
   <div class="text-center">
-    <%= will_paginate @questions, renderer: BootstrapPagination::Rails %>
+    <% unless params[:navtab] == 'hot' %>
+      <%= will_paginate @questions, renderer: BootstrapPagination::Rails %>
+    <% end %>
   </div>
 </div>
