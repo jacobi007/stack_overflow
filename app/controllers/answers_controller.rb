@@ -14,11 +14,6 @@ class AnswersController < ApplicationController
     @answer = Answer.new
   end
 
-
-  def edit
-  end
-
-
   def create
     @answer = Answer.new(answer_params)
     @answer.update_attributes(user_id: current_user.id)
@@ -30,17 +25,10 @@ class AnswersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /answers/1
-  # PATCH/PUT /answers/1.json
+
   def update
-    respond_to do |format|
-      if @answer.update(answer_params)
-        format.html { redirect_to @answer, notice: 'Answer was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @answer.errors, status: :unprocessable_entity }
-      end
+    if @answer.update(answer_params)
+      redirect_to @answer.question
     end
   end
 
@@ -62,6 +50,6 @@ class AnswersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def answer_params
-      params.require(:answer).permit(:body, :question_id, :user_id)
+      params.require(:answer).permit(:body, :question_id, :user_id, :accepted)
     end
 end

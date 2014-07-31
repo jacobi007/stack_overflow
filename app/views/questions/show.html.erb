@@ -1,5 +1,4 @@
 <!-- MAIN SECTION -->
-
 <div>
   <h3><%= @question.title %></h3>
   <p>
@@ -40,16 +39,29 @@
             <h4 class="media-heading">
               <b><%= link_to answer.user.username, answer.user %></b>
               <small><%= time_ago_in_words(answer.updated_at) %> ago</small>
+
+
+              <% if answer.question.has_accepted_answer? %>
+                <% if answer.accepted %>
+                  <span id="accepted-answer" class="pull-right">ANSWER ACCEPTED</span>
+                <% end %>
+              <% elsif answer.user != answer.question.user && current_user == answer.question.user %>
+                <span class="pull-right">
+                  <%= link_to("Accept this answer", answer_path(answer,
+                              "answer[accepted]" => true), method: :put, class: 'btn btn-success') %>
+                </span>
+              <% end %>
+
             </h4>
             <p>
               <%= answer.body %>
             </p>
           </div>
-          <hr>
         </div>
+        <hr>
       <% end %>
 
-      <% if user_signed_in? %>
+      <% if user_signed_in? && !@question.has_accepted_answer? %>
       <h3>Add comment!</h3>
       <%= simple_form_for @answer do |f| %>
         <%= f.input :body, label: false, input_html: { rows: 8 } %>
