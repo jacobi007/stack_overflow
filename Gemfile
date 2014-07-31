@@ -3,7 +3,9 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 gem 'sqlite3', :group => [:development, :test]
+
 group :production do
+  gem 'rails_12factor'
   gem 'thin'
   gem 'pg'
 end
