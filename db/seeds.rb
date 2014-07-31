@@ -50,5 +50,5 @@ Category.all.each do |c|
 end
 
 Question.all.each do |q|
-  q.update_attribute :answers_count, c.answers.count
+  q.update_attribute :answers_count, q.answers.count
 end
